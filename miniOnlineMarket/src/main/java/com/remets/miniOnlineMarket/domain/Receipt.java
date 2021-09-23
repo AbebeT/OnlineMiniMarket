@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PastOrPresent;
 import java.util.Date;
 import java.util.List;
+
 @Entity
 @Data
 @Getter
@@ -19,25 +20,26 @@ public class Receipt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
-    @NotBlank
+    // @NotEmpty
+    // @NotBlank
     private String productName;
     private int quantity;
     private double totalPrice;
-//    @NotEmpty
-//    @NotBlank
-//    private String sellerName;
+    //    @NotEmpty
+    //    @NotBlank
+    //    private String sellerName;
 
-    @PastOrPresent
+    // @PastOrPresent
+    @Column(name = "receipt_date")
     private Date date;
 
-    @Valid
-    @OneToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name ="buyer_id")
-    private Buyer buyer;
+    // @Valid
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "buyer_id")
+//    private Buyer buyer;
 
-    Receipt(String productName, int  quantity, double totalPrice
-    ){
+    Receipt(String productName, int quantity, double totalPrice
+    ) {
         this.productName = productName;
         this.quantity = quantity;
         this.totalPrice = totalPrice;

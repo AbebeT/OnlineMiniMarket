@@ -27,40 +27,44 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
+//    @NotNull
     private long productId;
 
-    @NotBlank
-    @NotEmpty
-    @Column(name="product_name")
+//    @NotBlank
+//    @NotEmpty
+    @Column(name = "product_name")
     private String name;
 
 
     private String category;
-    @Digits(integer = 5, fraction = 2, message = "exceed the given limit")
+    // @Digits(integer = 5, fraction = 2, message = "exceed the given limit")
     private double price;
 
-    @NotNull
+    // @NotNull
     private int quantity;
 
     private String description;
 
-//    @ManyToOne
-//    private Buyer buyer;
-    @Valid
+    //    @ManyToOne
+    // private Buyer buyer;
+    // @Valid
     @ManyToMany(mappedBy = "products")
-    private Set<@Valid Seller> sellers;
+    // private Set<@Valid Seller> sellers;
+    private Set<Seller> sellers;
 
-    @Valid
+    // @Valid
     @ManyToMany(mappedBy = "products")
     @JsonIgnore
-    private Set< @Valid Order> orders;
+    // private Set<@Valid Order> orders;
+    private Set<Order> orders;
 
-    @Valid
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name="product_review")
-    @JsonIgnore
-    private List<@Valid Review> reviews;
+    // @Valid
+    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product")
+//    @JoinTable(name = "product_review")
+//    @JsonIgnore
+    // private List<@Valid Review> reviews;
+    private List<Review> reviews;
 
 
 }

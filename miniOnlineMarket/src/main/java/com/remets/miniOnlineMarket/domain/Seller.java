@@ -21,9 +21,10 @@ public class Seller extends Person{
 //    private long id;
 
     private boolean isApproved;
-    @Valid
+    // @Valid
     @ManyToMany(cascade = CascadeType.ALL, fetch= FetchType.EAGER)
     @JoinTable(name="seller_products")
-    private Set<@Valid Product> products;
+    // private Set<@Valid Product> products;
+    private Set<Product> products;
 
 }

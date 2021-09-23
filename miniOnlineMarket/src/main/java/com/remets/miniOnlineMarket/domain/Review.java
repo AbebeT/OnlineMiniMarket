@@ -24,7 +24,8 @@ public class Review {
 
     private boolean isApproved= false;
 
-    @Valid
+    // @Valid
     @ManyToOne
+    @JoinTable(name="product_Review")
     private Product product;
 }

@@ -8,7 +8,7 @@ public enum OrderStatus {
     SHIPPED ("shipped"),
     DELIVERED("delivered"),
     CANCELLED("cancelled");
-@NotEmpty
+    // @NotEmpty
     private String orderStatus;
 
     OrderStatus(String orderStatus){

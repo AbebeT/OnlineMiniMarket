@@ -18,20 +18,15 @@ import java.util.Set;
 @Entity
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotEmpty
     private String country;
-    @NotEmpty
-    private String state;
-    @NotEmpty
+    private String state_;
     private  String city;
-    @NotEmpty
+    @Column(name="street_address")
     private String streetAddress;
-    @NotEmpty
+    @Column(name="zip_code")
     private String zipCode;
-    @NotEmpty
-    @Valid
+    @Column(name="address_type")
     private AddressType addressType;
 
 }

@@ -135,13 +135,13 @@ public class BuyerServiceImpl implements BuyerService {
     @Override
     public Receipt processCart(long buyerId) {
         double totalPrice = 0;
-        Buyer buyer = buyerRepository.findById(buyerId).get();
+        //Buyer buyer = buyerRepository.findById(buyerId).get();
         List<Product> products = new ArrayList<>();
         Receipt receipt = new Receipt();
         products = getAllProductsInCart(buyerId);
         Order order = new Order();
        // order.setBuyer(buyer);
-        buyer.setPoint(buyer.getPoint() + 5);
+        //buyer.setPoint(buyer.getPoint() + 5);
         Set<Product> productList = new HashSet<>();
         for (Product product : products)
             productList.add(product);
@@ -151,7 +151,7 @@ public class BuyerServiceImpl implements BuyerService {
                 .reduce(0.0, (x, y) -> x + y).doubleValue() ;
         receipt.setTotalPrice(totalPrice);
         receipt.setDate(new Date());
-        receipt.setBuyer(buyer);
+/// receipt.setBuyer(buyer);
         return receipt;
     }
 }

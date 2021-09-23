@@ -45,7 +45,7 @@ public class AddressServiceImpl implements AddressService {
         updatedAddress.setCity(address.getCity());
         updatedAddress.setCountry(address.getCountry());
         updatedAddress.setZipCode(address.getZipCode());
-        updatedAddress.setState(address.getState());
+        updatedAddress.setState_(address.getState_());
         addressRepo.save(updatedAddress);
     }
 

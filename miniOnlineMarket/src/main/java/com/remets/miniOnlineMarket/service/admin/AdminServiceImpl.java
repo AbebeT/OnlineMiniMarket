@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -21,7 +22,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<Admin> getAll() {
-        return null;
+        return adminRepo.findAll();
     }
 
     @Override
@@ -29,26 +30,23 @@ public class AdminServiceImpl implements AdminService {
         adminRepo.save(admin);
     }
 
-//    @Override
-//    public Optional<Admin> getById(Long id) {
-//        return Optional.empty();
-//    }
-//
-//    @Override
-//    public void addAdmin(Admin admin) {
-//
-//    }
-//
-//    @Override
-//    public void deleteById(long id) {
-//
-//    }
+    @Override
+    public Optional<Admin> getById(Long id) {
+        return adminRepo.findById(id);
+    }
 
-//    @Override
-//    public void approveSeller(Long id) {
-//        Seller seller = sellerRepo.findById(id).get();
-//        seller.setApproved(true);
-//        sellerRepo.save(seller);
-//    }
+
+    @Override
+    public void deleteById(long id) {
+        adminRepo.deleteById(id);
+
+    }
+
+    @Override
+    public void approveSeller(Long id) {
+        Seller seller = sellerRepo.findById(id).get();
+        seller.setApproved(true);
+        sellerRepo.save(seller);
+    }
 }
 

@@ -12,11 +12,11 @@ public interface AdminService {
 
     void addAdmin(Admin admin);
 
-//    public Optional<Admin> getById(Long id);
-//
-//    public void addAdmin(Admin admin);
-//
-//    public void deleteById(long id);
+    public Optional<Admin> getById(Long id);
 
-//    public void approveSeller(Long id);
+
+
+    public void deleteById(long id);
+
+    public void approveSeller(Long id);
 }
