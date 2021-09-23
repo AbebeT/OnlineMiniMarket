@@ -1,14 +1,15 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.receipt;
 
-import com.remets.miniOnlineMarket.domain.Buyer;
 import com.remets.miniOnlineMarket.domain.Receipt;
 import com.remets.miniOnlineMarket.repository.ReceiptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 @Service
+@Transactional
 public class ReceiptServiceImpl implements ReceiptService{
 
     @Autowired

@@ -1,4 +1,4 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.person;
 
 import com.remets.miniOnlineMarket.domain.Cart;
 import com.remets.miniOnlineMarket.domain.Person;

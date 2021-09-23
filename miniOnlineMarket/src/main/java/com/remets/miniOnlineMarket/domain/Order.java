@@ -12,30 +12,40 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Data
-@Table(name="order")
+@Table(name = "order_")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-@Valid
+
+    @Valid
     private OrderStatus orderStatus;
 
     @Valid
     @ManyToOne
-    @JoinColumn(name= "buyer_id")
+    @JoinTable(name = "Order_buyer")
     private Buyer buyer;
-@Valid
+
+//    private String shippingAddress;
+//    private String billingAddress;
+    @Valid
     @ManyToOne
+    @JoinColumn(name="ship_address_id")
     private Address shippingAddress;
-@Valid
+
+    @Valid
     @ManyToOne
+    @JoinColumn(name="billing_address_id")
     private Address billingAddress;
-@Valid
-    @ManyToMany(cascade =CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name="order_product")
+
+    @Valid
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "order_product")
     private Set<@Valid Product> products;
-@Valid
-    @OneToOne(cascade = CascadeType.ALL, fetch= FetchType.EAGER)
+
+    @Valid
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="reciept_id")
     private Receipt receipt;
 }

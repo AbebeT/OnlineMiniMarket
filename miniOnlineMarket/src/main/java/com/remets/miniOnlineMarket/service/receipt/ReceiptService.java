@@ -1,4 +1,4 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.receipt;
 
 import com.remets.miniOnlineMarket.domain.Buyer;
 import com.remets.miniOnlineMarket.domain.Receipt;
@@ -9,6 +9,7 @@ import java.util.Optional;
 
 
 public interface ReceiptService {
+
     public Optional<Receipt> getById(Long id);
     public List<Receipt> getAll();
     public void deleteById(Long id);

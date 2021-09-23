@@ -44,7 +44,7 @@ public class Person {
     @NotEmpty
     @NotBlank
     private String role;
-    @Valid
-    @OneToOne
-    private Address address;
+//    @Valid
+//    @OneToOne
+//    private Address address;
 }

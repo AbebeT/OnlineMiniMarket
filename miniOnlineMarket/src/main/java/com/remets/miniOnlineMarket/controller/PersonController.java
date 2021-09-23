@@ -1,9 +1,8 @@
 package com.remets.miniOnlineMarket.controller;
 
 
-import com.remets.miniOnlineMarket.domain.Cart;
 import com.remets.miniOnlineMarket.domain.Person;
-import com.remets.miniOnlineMarket.service.PersonService;
+import com.remets.miniOnlineMarket.service.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

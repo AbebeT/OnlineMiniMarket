@@ -1,7 +1,8 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.cart;
 
 import com.remets.miniOnlineMarket.domain.Admin;
 import com.remets.miniOnlineMarket.domain.Cart;
+import com.remets.miniOnlineMarket.domain.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

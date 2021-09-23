@@ -1,7 +1,7 @@
 package com.remets.miniOnlineMarket.controller;
 
 import com.remets.miniOnlineMarket.domain.Receipt;
-import com.remets.miniOnlineMarket.service.ReceiptService;
+import com.remets.miniOnlineMarket.service.receipt.ReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

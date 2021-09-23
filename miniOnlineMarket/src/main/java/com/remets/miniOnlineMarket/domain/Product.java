@@ -50,10 +50,12 @@ public class Product {
     @Valid
     @ManyToMany(mappedBy = "products")
     private Set<@Valid Seller> sellers;
+
     @Valid
     @ManyToMany(mappedBy = "products")
     @JsonIgnore
     private Set< @Valid Order> orders;
+
     @Valid
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name="product_review")

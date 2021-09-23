@@ -22,7 +22,7 @@ public class Review {
 
     private String productReview;
 
-    private boolean isApproved;
+    private boolean isApproved= false;
 
     @Valid
     @ManyToOne

@@ -14,5 +14,5 @@ import javax.persistence.Id;
 public class Admin extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 }

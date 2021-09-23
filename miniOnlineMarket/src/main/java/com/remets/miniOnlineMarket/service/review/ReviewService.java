@@ -1,4 +1,4 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.review;
 
 import com.remets.miniOnlineMarket.domain.Review;
 import org.springframework.stereotype.Service;
@@ -12,4 +12,5 @@ public interface ReviewService {
     public Optional<Review> getById(long id);
     public void deleteById(long id);
     public void addReview(Review review);
+    public Review approveReview(long id);
 }

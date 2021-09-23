@@ -1,15 +1,17 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.buyer;
 
 import com.remets.miniOnlineMarket.domain.*;
 import com.remets.miniOnlineMarket.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class BuyerServiceImpl implements BuyerService{
+@Transactional
+public class BuyerServiceImpl implements BuyerService {
 
     @Autowired
     ProductRepo productRepo;
@@ -24,6 +26,9 @@ public class BuyerServiceImpl implements BuyerService{
 
     @Autowired
     CartRepo cartRepo;
+    @Autowired
+    ReceiptRepository receiptRepository;
+
     @Override
     public Optional<Buyer> getById(Long id) {
         return buyerRepository.findById(id);
@@ -39,6 +44,7 @@ public class BuyerServiceImpl implements BuyerService{
         buyerRepository.deleteById(id);
 
     }
+
     @Override
     public void addBuyer(Buyer buyer) {
         buyerRepository.save(buyer);
@@ -53,11 +59,22 @@ public class BuyerServiceImpl implements BuyerService{
     }
 
     @Override
-    public void placeOrder(long buyerId, long orderId) {
+    public Set<Seller> unFollowSeller(long buyerId, long sellerId) {
         Buyer buyer = buyerRepository.findById(buyerId).get();
-        Order order = orderRepository.findById(orderId).get();
-        buyer.getOrders().add(order);
-        buyerRepository.save(buyer);
+        Seller seller = sellerRepo.findById(sellerId).get();
+        Set<Seller> sellers = new HashSet<>();
+        sellers = buyer.getSellers();
+        sellers.remove(seller);
+        buyer.setSellers(sellers);
+        return buyerRepository.save(buyer).getSellers();
+    }
+
+    @Override
+    public void placeOrder(long buyerId, long orderId) {
+//        Buyer buyer = buyerRepository.findById(buyerId).get();
+//        Order order = orderRepository.findById(orderId).get();
+//        buyer.getOrders().add(order);
+//        buyerRepository.save(buyer);
     }
 
     @Override
@@ -104,9 +121,9 @@ public class BuyerServiceImpl implements BuyerService{
         Set<Product> products = new HashSet<>();
 
 
-        orders.stream().forEach(o->o.getProducts().forEach(p->products.add(p)));
+        orders.stream().forEach(o -> o.getProducts().forEach(p -> products.add(p)));
 
-        Product product = products.stream().filter(p->p.getProductId() ==productId).collect(Collectors.toList()).get(0);
+        Product product = products.stream().filter(p -> p.getProductId() == productId).collect(Collectors.toList()).get(0);
         List<Review> reviews = product.getReviews();
         review.setApproved(false);
         review.setProduct(product);
@@ -115,7 +132,26 @@ public class BuyerServiceImpl implements BuyerService{
         productRepo.save(product);
     }
 
-
-
-
+    @Override
+    public Receipt processCart(long buyerId) {
+        double totalPrice = 0;
+        Buyer buyer = buyerRepository.findById(buyerId).get();
+        List<Product> products = new ArrayList<>();
+        Receipt receipt = new Receipt();
+        products = getAllProductsInCart(buyerId);
+        Order order = new Order();
+       // order.setBuyer(buyer);
+        buyer.setPoint(buyer.getPoint() + 5);
+        Set<Product> productList = new HashSet<>();
+        for (Product product : products)
+            productList.add(product);
+        order.setProducts(productList);
+        totalPrice = products.stream()
+                .map(p -> p.getPrice() * p.getQuantity())
+                .reduce(0.0, (x, y) -> x + y).doubleValue() ;
+        receipt.setTotalPrice(totalPrice);
+        receipt.setDate(new Date());
+        receipt.setBuyer(buyer);
+        return receipt;
+    }
 }

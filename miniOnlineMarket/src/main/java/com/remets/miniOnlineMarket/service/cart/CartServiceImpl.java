@@ -1,15 +1,15 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.cart;
 
-import com.remets.miniOnlineMarket.domain.Address;
 import com.remets.miniOnlineMarket.domain.Cart;
 import com.remets.miniOnlineMarket.repository.CartRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 @Service
+@Transactional
 public class CartServiceImpl implements CartService {
 
     @Autowired
@@ -34,4 +34,5 @@ public class CartServiceImpl implements CartService {
     public void deleteById(long id) {
         cartRepo.deleteById(id);
     }
+
 }

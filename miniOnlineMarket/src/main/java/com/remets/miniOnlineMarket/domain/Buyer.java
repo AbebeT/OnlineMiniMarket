@@ -18,20 +18,20 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Buyer extends Person{
+public class Buyer extends Person {
 
-//    @Id
+    //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private long id;
     @NotNull
     private double point;
 
-    @OneToMany(mappedBy = "buyer", fetch=FetchType.EAGER )
+    @OneToMany(mappedBy = "buyer")
     @JsonIgnore
     private Set<Order> orders;
-@Valid
-    @OneToMany(fetch=FetchType.EAGER)
-    @JoinTable(name= "buyer_seller")
+    @Valid
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "buyer_seller")
     @JsonIgnore
     private Set<@Valid Seller> sellers;
 
@@ -39,8 +39,8 @@ public class Buyer extends Person{
 //    @OneToMany
 //    private Set<Product> products;
     @Valid
-    @OneToOne(cascade =CascadeType.ALL)
-    @JoinColumn(name= "cart_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
 }

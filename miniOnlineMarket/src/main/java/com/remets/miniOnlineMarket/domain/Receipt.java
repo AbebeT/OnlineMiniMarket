@@ -1,9 +1,6 @@
 package com.remets.miniOnlineMarket.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -13,6 +10,7 @@ import javax.validation.constraints.PastOrPresent;
 import java.util.Date;
 import java.util.List;
 @Entity
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,9 +24,9 @@ public class Receipt {
     private String productName;
     private int quantity;
     private double totalPrice;
-    @NotEmpty
-    @NotBlank
-    private String sellerName;
+//    @NotEmpty
+//    @NotBlank
+//    private String sellerName;
 
     @PastOrPresent
     private Date date;
@@ -37,5 +35,12 @@ public class Receipt {
     @OneToOne(cascade= CascadeType.ALL)
     @JoinColumn(name ="buyer_id")
     private Buyer buyer;
+
+    Receipt(String productName, int  quantity, double totalPrice
+    ){
+        this.productName = productName;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+    }
 
 }

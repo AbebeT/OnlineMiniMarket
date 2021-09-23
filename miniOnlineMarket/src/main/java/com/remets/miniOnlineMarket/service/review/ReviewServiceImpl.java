@@ -1,13 +1,15 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.review;
 
 import com.remets.miniOnlineMarket.domain.Review;
 import com.remets.miniOnlineMarket.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 @Service
+@Transactional
 public class ReviewServiceImpl implements ReviewService{
     @Autowired
     ReviewRepository reviewRepository;
@@ -29,6 +31,14 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public void addReview(Review review) {
         reviewRepository.save(review);
-
     }
+
+    @Override
+    public Review approveReview(long id) {
+        Review review = getById(id).get();
+        review.setApproved(true);
+        addReview(review);
+        return review;
+    }
+
 }

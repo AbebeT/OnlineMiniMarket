@@ -1,4 +1,4 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.address;
 
 import com.remets.miniOnlineMarket.domain.Address;
 import org.springframework.stereotype.Service;

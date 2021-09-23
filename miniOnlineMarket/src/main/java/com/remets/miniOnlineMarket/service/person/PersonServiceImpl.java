@@ -1,14 +1,15 @@
-package com.remets.miniOnlineMarket.service;
+package com.remets.miniOnlineMarket.service.person;
 
 import com.remets.miniOnlineMarket.domain.Person;
 import com.remets.miniOnlineMarket.repository.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 @Service
+@Transactional
 public class PersonServiceImpl implements PersonService {
     @Autowired
     PersonRepo personRepo;

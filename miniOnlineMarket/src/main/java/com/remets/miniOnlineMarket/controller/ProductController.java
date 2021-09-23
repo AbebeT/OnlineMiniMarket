@@ -1,9 +1,9 @@
 package com.remets.miniOnlineMarket.controller;
 
 
-import com.remets.miniOnlineMarket.domain.Person;
 import com.remets.miniOnlineMarket.domain.Product;
-import com.remets.miniOnlineMarket.service.ProductService;
+import com.remets.miniOnlineMarket.domain.Review;
+import com.remets.miniOnlineMarket.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,4 +37,18 @@ public class ProductController {
         productService.deleteById(id);
 
     }
+
+//    @PutMapping("/{id}/")
+//    public void updateProduct(@RequestBody Product product, @PathVariable long id) {
+//        productService.updateProduct(product, id);
+//    }
+
+    @GetMapping("/{productId}/reviews")
+    public List<Review> getReviewByProduct(long id){
+        return productService.getReviewByProduct(id);
+    }
+
+
+
+
 }

@@ -1,8 +1,7 @@
 package com.remets.miniOnlineMarket.controller;
 
 import com.remets.miniOnlineMarket.domain.Review;
-import com.remets.miniOnlineMarket.repository.ReviewRepository;
-import com.remets.miniOnlineMarket.service.ReviewService;
+import com.remets.miniOnlineMarket.service.review.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +19,7 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Review> getById(long id) {
+    public Optional<Review> getById(@PathVariable long id) {
         return reviewService.getById(id);
     }
     @DeleteMapping("/{id}")
@@ -32,6 +31,11 @@ public class ReviewController {
     public void addReview(@RequestBody Review review) {
         reviewService.addReview(review);
 
+    }
+
+    @GetMapping("{id}/reviews")
+    Review approveReview(@PathVariable  long id){
+       return reviewService.approveReview(id);
     }
 
 }
