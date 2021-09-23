@@ -92,9 +92,10 @@ public class BuyerServiceImpl implements BuyerService {
     }
 
     @Override
-    public List<Product> removeProductFromCart(long id, Product product) {
+    public List<Product> removeProductFromCart(long id, long  productId) {
         Buyer buyer = buyerRepository.findById(id).get();
-        Cart cart = cartRepo.findCartByBuyer(buyer);
+        Cart cart = buyer.getCart();
+        Product product = cart.getProducts().stream().filter(p->p.getProductId() == productId).collect(Collectors.toList()).get(0);
         cart.getProducts().remove(product);
         return cartRepo.save(cart).getProducts();
     }
@@ -153,5 +154,21 @@ public class BuyerServiceImpl implements BuyerService {
         receipt.setDate(new Date());
 /// receipt.setBuyer(buyer);
         return receipt;
+    }
+
+    @Override
+    public Set<Seller> getSellers(long buyerId) {
+        Buyer buyer = buyerRepository.findById(buyerId).get();
+        return buyer.getSellers();
+    }
+
+    @Override
+    public void createCart(long buyerId) {
+        Buyer buyer = buyerRepository.findById(buyerId).get();
+        Cart cart = new Cart(buyer);
+
+        buyer.setCart(cart);
+        buyerRepository.save(buyer);
+
     }
 }

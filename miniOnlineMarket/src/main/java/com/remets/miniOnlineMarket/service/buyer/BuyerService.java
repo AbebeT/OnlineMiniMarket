@@ -27,7 +27,7 @@ public interface BuyerService {
 
     public List<Product> addProductToCart(long id, Product product);
 
-    public List<Product> removeProductFromCart(long id, Product product);
+    public  List<Product> removeProductFromCart(long id, long  productId);
 
     public List<Product> getAllProductsInCart(long buyerId);
 
@@ -37,4 +37,7 @@ public interface BuyerService {
 
     public Receipt processCart(long buyerId);
 
+    public Set<Seller> getSellers(long buyerId);
+
+    public void createCart(long buyerId);
 }

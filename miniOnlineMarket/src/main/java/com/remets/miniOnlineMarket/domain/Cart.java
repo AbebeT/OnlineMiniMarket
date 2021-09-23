@@ -1,5 +1,6 @@
 package com.remets.miniOnlineMarket.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,11 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
+
     // @Valid
     @OneToMany
+    @JsonIgnore
     // private List<@Valid Product> products;
     private List< Product> products;
     // @Valid
@@ -29,4 +33,7 @@ public class Cart {
     private Buyer buyer;
 
 
+    public Cart(Buyer buyer) {
+        this.buyer = buyer;
+    }
 }

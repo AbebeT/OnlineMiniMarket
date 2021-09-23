@@ -24,6 +24,7 @@ public class Seller extends Person{
     // @Valid
     @ManyToMany(cascade = CascadeType.ALL, fetch= FetchType.EAGER)
     @JoinTable(name="seller_products")
+    @JsonIgnore
     // private Set<@Valid Product> products;
     private Set<Product> products;
 

@@ -36,13 +36,19 @@ public class BuyerController {
         buyerService.addBuyer(buyer);
 
     }
-
-    @PostMapping("{/buyerId}/sellers/{/sellerid}/follow")
-    public Set<Seller> followSeller(@PathVariable long buyerId, @PathVariable long sellerId) {
-        return buyerService.followSeller(buyerId, sellerId);
+    @GetMapping("/{buyerId}/sellers")
+    public Set<Seller> getSellers(@PathVariable long buyerId)
+    {
+       return  buyerService.getSellers(buyerId);
     }
 
-    @PostMapping("{/buyerId}/sellers/{/sellerid}/unfollow")
+
+    @PostMapping("/{buyerId}/sellers/{sellerId}/follow")
+    public Set<Seller> followSeller(@PathVariable long buyerId, @PathVariable long sellerId) {
+         return buyerService.followSeller(buyerId, sellerId);
+    }
+
+    @PostMapping("/{buyerId}/sellers/{sellerId}/unfollow")
     public Set<Seller> unFollowSeller(@PathVariable long buyerId, @PathVariable long sellerId) {
         return buyerService.unFollowSeller(buyerId, sellerId);
     }
@@ -57,9 +63,9 @@ public class BuyerController {
         return buyerService.addProductToCart(id, product);
     }
 
-    @DeleteMapping("{/id}/carts/products")
-    public List<Product> removeProductFromCart(@PathVariable long id, Product product) {
-        return buyerService.removeProductFromCart(id, product);
+    @DeleteMapping("/{id}/carts/products/{productId}")
+    public List<Product> removeProductFromCart(@PathVariable long id, @PathVariable long  productId) {
+        return buyerService.removeProductFromCart(id, productId);
     }
 
     @GetMapping("/{buyerId}/carts/products")
@@ -80,6 +86,11 @@ public class BuyerController {
     @GetMapping("/{buyerId}/carts")
     public Receipt processCart(@PathVariable long buyerId) {
         return buyerService.processCart(buyerId);
+
+    }
+    @PostMapping("/{buyerId}/carts")
+    public void createCart (@PathVariable long buyerId) {
+         buyerService.createCart(buyerId);
 
     }
 }

@@ -1,5 +1,6 @@
 package com.remets.miniOnlineMarket.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,6 @@ public class Review {
     // @Valid
     @ManyToOne
     @JoinTable(name="product_Review")
+    @JsonIgnore
     private Product product;
 }

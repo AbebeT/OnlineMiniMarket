@@ -61,6 +61,7 @@ public class Product {
     // @Valid
     //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
 //    @JoinTable(name = "product_review")
 //    @JsonIgnore
     // private List<@Valid Review> reviews;

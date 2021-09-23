@@ -16,8 +16,8 @@ INSERT into BUYER (id, first_name,last_name,phone_number, user_name, password, e
 INSERT into BUYER (id, first_name,last_name,phone_number, user_name, password, email, role_, address_id, point) VALUES (2, 'Geb','Wel','6451932117', 'geb', '1234', 'geb@miu.edu','Buyer',1, 0.50);
 
 
-INSERT into CART (id, buyer_id) VALUES (1,1);
-INSERT into CART (id, buyer_id) VALUES (2,2);
+-- INSERT into CART (id, buyer_id) VALUES (1,1);
+-- INSERT into CART (id, buyer_id) VALUES (2,2);
 
 INSERT into RECEIPT( product_name, quantity, total_price) VALUES( 'Laptop', 3, 150.00);
 INSERT into RECEIPT( product_name, quantity, total_price) VALUES( 'Mobile', 5, 100);
@@ -57,5 +57,5 @@ INSERT into SELLER_PRODUCTS(SELLERS_ID,PRODUCTS_ID) VALUES(2,2);
 INSERT into PRODUCT_REVIEW (PRODUCT_ID,ID) VALUES (1,1);
 INSERT into PRODUCT_REVIEW (PRODUCT_ID,ID) VALUES (1,2);
 
-INSERT into CART_PRODUCTS (CART_ID, PRODUCTS_ID) VALUES (1,1);
-INSERT into CART_PRODUCTS (CART_ID, PRODUCTS_ID) VALUES (1,2);
+-- INSERT into CART_PRODUCTS (CART_ID, PRODUCTS_ID) VALUES (1,1);
+-- INSERT into CART_PRODUCTS (CART_ID, PRODUCTS_ID) VALUES (1,2);

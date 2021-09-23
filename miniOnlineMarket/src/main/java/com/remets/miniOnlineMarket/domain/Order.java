@@ -1,5 +1,6 @@
 package com.remets.miniOnlineMarket.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,6 +33,7 @@ public class Order {
     // @Valid
     @ManyToOne
     @JoinColumn(name="shipping_address_id")
+    @JsonIgnore
     private Address shippingAddress;
 
     //  @Valid
@@ -42,6 +44,7 @@ public class Order {
     // @Valid
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "order_product")
+    @JsonIgnore
     // private Set<@Valid Product> products;
     private Set<Product> products;
 
