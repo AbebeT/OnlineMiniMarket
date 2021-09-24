@@ -28,9 +28,6 @@ public class Order {
     @JoinTable(name = "Order_buyer")
     private Buyer buyer;
 
-//    private String shippingAddress;
-//    private String billingAddress;
-    // @Valid
     @ManyToOne
     @JoinColumn(name="shipping_address_id")
     @JsonIgnore
@@ -52,4 +49,7 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="reciept_id")
     private Receipt receipt;
+
+    @ManyToOne
+    private Seller seller;
 }

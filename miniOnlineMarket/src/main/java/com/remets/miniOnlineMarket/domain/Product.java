@@ -27,11 +27,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @NotNull
     private long productId;
 
-//    @NotBlank
-//    @NotEmpty
     @Column(name = "product_name")
     private String name;
 
@@ -40,31 +37,20 @@ public class Product {
     // @Digits(integer = 5, fraction = 2, message = "exceed the given limit")
     private double price;
 
-    // @NotNull
     private int quantity;
 
     private String description;
 
-    //    @ManyToOne
-    // private Buyer buyer;
-    // @Valid
     @ManyToMany(mappedBy = "products")
-    // private Set<@Valid Seller> sellers;
+
     private Set<Seller> sellers;
 
-    // @Valid
     @ManyToMany(mappedBy = "products")
     @JsonIgnore
-    // private Set<@Valid Order> orders;
-    private Set<Order> orders;
 
-    // @Valid
-    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Order> orders;
     @OneToMany(mappedBy = "product")
     @JsonIgnore
-//    @JoinTable(name = "product_review")
-//    @JsonIgnore
-    // private List<@Valid Review> reviews;
     private List<Review> reviews;
 
 

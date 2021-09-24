@@ -23,13 +23,12 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    // @NotBlank
-    //private long personId;
-    // @NotBlank
-    // @NotEmpty
+
+    @NotBlank
+    @NotEmpty
     private String firstName;
-    // @NotBlank
-    // @NotEmpty
+    @NotBlank
+    @NotEmpty
     private String lastName;
 
     // @NotEmpty
@@ -37,12 +36,12 @@ public class Person {
     private String userName;
 
     @JsonIgnore
-    // @NotBlank
+    @NotBlank
     private String password;
-    // @Email
+    @Email
     private String email;
-    // @NotEmpty
-    // @NotBlank
+    @NotEmpty
+    @NotBlank
     private String role_;
     //    @Valid
     @OneToOne

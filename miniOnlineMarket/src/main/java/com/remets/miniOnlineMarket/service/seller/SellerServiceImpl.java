@@ -1,8 +1,10 @@
 package com.remets.miniOnlineMarket.service.seller;
 
+import com.remets.miniOnlineMarket.domain.Order;
 import com.remets.miniOnlineMarket.domain.Product;
 import com.remets.miniOnlineMarket.domain.Seller;
 import com.remets.miniOnlineMarket.repository.SellerRepo;
+import com.remets.miniOnlineMarket.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.util.stream.Collectors;
 public class SellerServiceImpl implements  SellerService{
     @Autowired
     SellerRepo sellerRepo;
+    @Autowired
+    OrderService orderService;
     @Override
     public List<Seller> getAll() {
         return sellerRepo.findAll();
@@ -65,6 +69,17 @@ sellerRepo.deleteById(id);
 
     }
 
+    @Override
+    public Set<Order> getOrders(long sellerId) {
+        Seller seller = getById(sellerId).get();
+        return seller.getOrders();
+    }
+
+    public Order changeStatus(long orderId, long sellerId){
+        return orderService.changeStatus(orderId);
+
+    }
+
 //    @Override
 //    public void updateProduct(long sellerId, Product product) {
 //        Set<Product> products = getProducts(sellerId);
@@ -78,5 +93,6 @@ sellerRepo.deleteById(id);
 //        seller.setProducts(products);
 //        sellerRepo.save(sellerId, seller);
 //    }
+
 
 }

@@ -34,23 +34,23 @@ public class OrderController {
     @PostMapping
     public void addBuyer(@RequestBody Order order) {
         orderService.addOrder(order);
-
     }
-
     @GetMapping("/{orderId}/cancel")
-    public Order cancelOrder(@PathVariable  long orderId){
-        return orderService.cancelOrder(orderId);
+    public Order changeStatus(@PathVariable  long orderId){
+        return orderService.changeStatus(orderId);
     }
+//
+//    @GetMapping("/{orderId}/ship")
+//    public Order shipStatus(@PathVariable  long orderId){
+//        return orderService.shipStatus(orderId);
+//    }
+//
+//    @GetMapping("/{orderId}/deliver")
+//    public Order deliverStatus(@PathVariable  long orderId){
+//        return orderService.deliverStatus(orderId);
+//    }
 
-    @GetMapping("/{orderId}/ship")
-    public Order shipStatus(@PathVariable  long orderId){
-        return orderService.shipStatus(orderId);
-    }
 
-    @GetMapping("/{orderId}/deliver")
-    public Order deliverStatus(@PathVariable  long orderId){
-        return orderService.deliverStatus(orderId);
-    }
 
 
 

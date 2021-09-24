@@ -27,7 +27,7 @@ INSERT into RECEIPT( product_name, quantity, total_price) VALUES( 'Mobile', 5, 1
 -- INSERT into PERSON (id, firstName,lastName,phoneNumber, userName, password, email, role_, address_id) VALUES (2, 'Abe','Tek','6451932117', 'abe', '1234', 'abe@miu.edu','Seller',2);
 -- INSERT into PERSON (id, firstName,lastName,phoneNumber, userName, password, email, role_, address_id) VALUES (3, 'Beti','Des','6451932117', 'beti', '1234', 'beti@miu.edu','Buyer',3);
 
-INSERT into ORDER_ (order_status, shipping_address_id, billing_address_id) VALUES (2, 1, 1);
+INSERT into ORDER_ (order_status, shipping_address_id, billing_address_id) VALUES (0, 1, 1);
 INSERT into ORDER_ (order_status, shipping_address_id, billing_address_id) VALUES (1, 2, 3);
 
 
@@ -57,5 +57,8 @@ INSERT into SELLER_PRODUCTS(SELLERS_ID,PRODUCTS_ID) VALUES(2,2);
 INSERT into PRODUCT_REVIEW (PRODUCT_ID,ID) VALUES (1,1);
 INSERT into PRODUCT_REVIEW (PRODUCT_ID,ID) VALUES (1,2);
 
+INSERT into SELLER_ORDER (ORDERS_ID,SELLER_ID) VALUES (1,1);
+INSERT into SELLER_ORDER (ORDERS_ID,SELLER_ID) VALUES (2,2);
+
 -- INSERT into CART_PRODUCTS (CART_ID, PRODUCTS_ID) VALUES (1,1);
--- INSERT into CART_PRODUCTS (CART_ID, PRODUCTS_ID) VALUES (1,2);
+-- INSERT into CART_PRODUCTS (CART_ID, PRODUCTS_ID) VALUES (1,2); seller_order

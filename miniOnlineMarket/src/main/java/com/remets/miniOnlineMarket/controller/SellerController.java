@@ -1,8 +1,10 @@
 package com.remets.miniOnlineMarket.controller;
 
 
+import com.remets.miniOnlineMarket.domain.Order;
 import com.remets.miniOnlineMarket.domain.Product;
 import com.remets.miniOnlineMarket.domain.Seller;
+import com.remets.miniOnlineMarket.service.order.OrderService;
 import com.remets.miniOnlineMarket.service.seller.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ public class SellerController {
 
     @Autowired
     SellerService sellerService;
+
+    @Autowired
+    OrderService orderService;
 
 
     @GetMapping
@@ -57,6 +62,17 @@ public class SellerController {
     @DeleteMapping("{sellerId}/products/{id}")
     public void deleteProduct(@PathVariable long sellerId, @PathVariable long id){
          sellerService.deleteProduct(sellerId, id);
+    }
+
+    @GetMapping("{sellerId}/orders")
+    public Set<Order> getOrders(@PathVariable long sellerId){
+        return sellerService.getOrders(sellerId);
+    }
+
+
+    @GetMapping("{sellerId}/orders/{orderId}")
+    public Order changeOrderStatus(@PathVariable long sellerId, @PathVariable long orderId){
+        return orderService.changeStatus(orderId);
     }
 
 //    @PutMapping("{sellerId}/products/{id}")
