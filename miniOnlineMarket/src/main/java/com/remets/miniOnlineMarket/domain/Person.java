@@ -31,7 +31,6 @@ public class Person {
     @NotEmpty
     private String lastName;
 
-    // @NotEmpty
     private String phoneNumber;
     private String userName;
 
@@ -43,7 +42,7 @@ public class Person {
     @NotEmpty
     @NotBlank
     private String role_;
-    //    @Valid
+
     @OneToOne
     private Address address;
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/sellers")
 public class SellerController {
@@ -61,7 +61,7 @@ public class SellerController {
 
     @DeleteMapping("{sellerId}/products/{id}")
     public void deleteProduct(@PathVariable long sellerId, @PathVariable long id){
-         sellerService.deleteProduct(sellerId, id);
+        sellerService.deleteProduct(sellerId, id);
     }
 
     @GetMapping("{sellerId}/orders")
@@ -74,17 +74,5 @@ public class SellerController {
     public Order changeOrderStatus(@PathVariable long sellerId, @PathVariable long orderId){
         return orderService.changeStatus(orderId);
     }
-
-//    @PutMapping("{sellerId}/products/{id}")
-//    public void updateProduct(@PathVariable long sellerId, @RequestBody Product product){
-//        sellerService.updateProduct(sellerId, product);
-//    }
-
-
-
-
-
-
-
 
 }

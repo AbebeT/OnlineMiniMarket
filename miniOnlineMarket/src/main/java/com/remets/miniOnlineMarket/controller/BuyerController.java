@@ -2,13 +2,13 @@ package com.remets.miniOnlineMarket.controller;
 
 import com.remets.miniOnlineMarket.domain.*;
 import com.remets.miniOnlineMarket.service.buyer.BuyerService;
-import com.remets.miniOnlineMarket.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+
 
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -42,13 +42,13 @@ public class BuyerController {
     @GetMapping("/{buyerId}/sellers")
     public Set<Seller> getSellers(@PathVariable long buyerId)
     {
-       return  buyerService.getSellers(buyerId);
+        return  buyerService.getSellers(buyerId);
     }
 
 
     @PostMapping("/{buyerId}/sellers/{sellerId}/follow")
     public Set<Seller> followSeller(@PathVariable long buyerId, @PathVariable long sellerId) {
-         return buyerService.followSeller(buyerId, sellerId);
+        return buyerService.followSeller(buyerId, sellerId);
     }
 
     @PostMapping("/{buyerId}/sellers/{sellerId}/unfollow")
@@ -78,7 +78,7 @@ public class BuyerController {
 
     @DeleteMapping("/{buyerId}/carts")
     public void clearCart(@PathVariable long buyerId) {
-         buyerService.clearCart(buyerId);
+        buyerService.clearCart(buyerId);
     }
 
     @PostMapping("/{buyerId}/products/{productId}/review")
@@ -93,15 +93,9 @@ public class BuyerController {
     }
     @PostMapping("/{buyerId}/carts")
     public void createCart (@PathVariable long buyerId) {
-         buyerService.createCart(buyerId);
+        buyerService.createCart(buyerId);
 
     }
-
-    //place order add
-//    @PostMapping("/{buyerId}/orders/{productId}")
-//    public Receipt placeOrder(long buyerId, long productId){
-//        return buyerService.placeOrder(buyerId, productId);
-//    }
 
     @DeleteMapping("/{buyerId}/orders/{orderId}")
     public void cancelOrder(@PathVariable long buyerId, @PathVariable long orderId){

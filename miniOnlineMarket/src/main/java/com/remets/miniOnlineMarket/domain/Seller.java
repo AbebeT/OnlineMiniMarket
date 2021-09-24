@@ -7,7 +7,6 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

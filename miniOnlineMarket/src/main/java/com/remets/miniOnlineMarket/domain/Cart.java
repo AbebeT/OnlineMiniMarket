@@ -23,13 +23,10 @@ public class Cart {
 
     @OneToMany
     @JsonIgnore
-
     private List< Product> products;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    @JsonIgnore
     private Buyer buyer;
-
     public Cart(Buyer buyer) {
         this.buyer = buyer;
     }

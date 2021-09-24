@@ -34,7 +34,7 @@ public class Product {
 
 
     private String category;
-    // @Digits(integer = 5, fraction = 2, message = "exceed the given limit")
+
     private double price;
 
     private int quantity;
@@ -42,15 +42,13 @@ public class Product {
     private String description;
 
     @ManyToMany(mappedBy = "products")
-
     private Set<Seller> sellers;
 
     @ManyToMany(mappedBy = "products")
     @JsonIgnore
-
     private Set<Order> orders;
+
     @OneToMany(mappedBy = "product")
-    @JsonIgnore
     private List<Review> reviews;
 
 

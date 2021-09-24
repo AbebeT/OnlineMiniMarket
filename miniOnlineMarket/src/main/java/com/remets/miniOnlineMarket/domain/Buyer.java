@@ -25,11 +25,9 @@ public class Buyer extends Person {
     @OneToMany(mappedBy = "buyer")
     @JsonIgnore
     private Set<Order> orders;
-    // @Valid
     @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "buyer_seller")
     @JsonIgnore
-    // private Set<@Valid Seller> sellers;
     private Set<Seller> sellers;
 
     @OneToOne(cascade = CascadeType.ALL)

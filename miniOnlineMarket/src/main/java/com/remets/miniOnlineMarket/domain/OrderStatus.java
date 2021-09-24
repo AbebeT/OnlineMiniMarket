@@ -8,7 +8,6 @@ public enum OrderStatus {
     SHIPPED ("shipped"),
     DELIVERED("delivered"),
     CANCELLED("cancelled");
-
     private String orderStatus;
 
     OrderStatus(String orderStatus){

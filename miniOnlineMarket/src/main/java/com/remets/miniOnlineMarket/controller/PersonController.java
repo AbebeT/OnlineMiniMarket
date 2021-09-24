@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 
+
+
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/persons")
 public class PersonController {
@@ -37,3 +40,4 @@ public class PersonController {
         personService.deleteById(id);
     }
 }
+

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.*;
 import java.util.stream.Collectors;
-
 @Service
 @Transactional
 public class SellerServiceImpl implements  SellerService{
@@ -31,12 +30,12 @@ public class SellerServiceImpl implements  SellerService{
 
     @Override
     public void addSeller(Seller seller) {
-sellerRepo.save(seller);
+        sellerRepo.save(seller);
     }
 
     @Override
     public void deleteById(long id) {
-sellerRepo.deleteById(id);
+        sellerRepo.deleteById(id);
     }
     @Override
     public void addProduct( long id,  Product product){

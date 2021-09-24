@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/orders")
 
@@ -39,19 +39,6 @@ public class OrderController {
     public Order changeStatus(@PathVariable  long orderId){
         return orderService.changeStatus(orderId);
     }
-//
-//    @GetMapping("/{orderId}/ship")
-//    public Order shipStatus(@PathVariable  long orderId){
-//        return orderService.shipStatus(orderId);
-//    }
-//
-//    @GetMapping("/{orderId}/deliver")
-//    public Order deliverStatus(@PathVariable  long orderId){
-//        return orderService.deliverStatus(orderId);
-//    }
-
-
-
 
 
 }

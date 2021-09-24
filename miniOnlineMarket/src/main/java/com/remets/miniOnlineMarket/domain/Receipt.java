@@ -10,6 +10,7 @@ import javax.validation.constraints.PastOrPresent;
 import java.util.Date;
 import java.util.List;
 
+
 @Entity
 @Data
 @Getter
@@ -32,5 +33,4 @@ public class Receipt {
         this.quantity = quantity;
         this.totalPrice = totalPrice;
     }
-
 }
